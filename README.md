@@ -21,8 +21,8 @@
 Код и инструкции по развёртыванию каждой системы хранятся в отдельном репозитории.
 
 Данный репозиторий относится к Очереди Заданий (tksva_q).
-Репозитарии инспектора (tksva_p) и Веб-интерфейса (tksva) доступны по ссылкам:
-- [Очередь заданий (tksva_p)](https://github.com/DSTsvetkovTRCONT/tksva_q)
+Репозитарии Инспектора (tksva_p) и Веб-интерфейса (tksva) доступны по ссылкам:
+- [Инспектор (tksva_p)](https://github.com/DSTsvetkovTRCONT/tksva_p)
 - [Веб-интерфейс (tksva)](https://github.com/DSTsvetkovTRCONT/tksva)
 
 #### Описание алгоритма
