@@ -8,18 +8,35 @@ from logging.handlers import TimedRotatingFileHandler
 if not os.path.exists('logs'):
     os.mkdir('logs')
 
+#logger = logging.getLogger(__name__)
+#logger.setLevel(logging.INFO)
+#formatter_psql = logging.Formatter("%(name)s %(asctime)s %(levelname)s %(message)s")
+
+#handler_file_psql = TimedRotatingFileHandler("logs/tksva_q.log",
+#                                             encoding='utf-8',
+#                                             when='d',
+#                                             interval=1,
+#                                             backupCount=7)
+
+#handler_file_psql.setFormatter(formatter_psql)
+#logger.addHandler(handler_file_psql)
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-formatter_psql = logging.Formatter("%(name)s %(asctime)s %(levelname)s %(message)s")
+formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s %(message)s")
 
-handler_file_psql = TimedRotatingFileHandler("logs/tksva_q.log",
-                                             encoding='utf-8',
-                                             when='d',
-                                             interval=1,
-                                             backupCount=7)
+file_handler = TimedRotatingFileHandler("logs/tksva_q.log",
+                                        encoding='utf-8',
+                                        when='d',
+                                        interval=1,
+                                        backupCount=7)
 
-handler_file_psql.setFormatter(formatter_psql)
-logger.addHandler(handler_file_psql)
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 

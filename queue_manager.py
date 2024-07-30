@@ -7,27 +7,43 @@ import time
 from dotenv import load_dotenv
 from psql import get_queued_posts, get_gives_information_status
 import logging
+# from logging.handlers import RotatingFileHandler
 from logging.handlers import TimedRotatingFileHandler
 
 if not os.path.exists('logs'):
     os.mkdir('logs')
 
+#logger = logging.getLogger(__name__)
+#logger.setLevel(logging.INFO)
+
+#formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s %(message)s")
+
+#file_handler = RotatingFileHandler('logs/tksva_q.log',
+#                                   maxBytes=20480,
+#                                   backupCount=10)
+#file_handler.setFormatter(formatter)
+#logger.addHandler(file_handler)
+
+#console_handler = logging.StreamHandler()
+#console_handler.setFormatter(formatter)
+#logger.addHandler(console_handler)
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-formatter = logging.Formatter("%(name)s %(asctime)s %(levelname)s %(message)s")
+formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s %(message)s")
 
-handler_file = TimedRotatingFileHandler("logs/tksva_q.log",
+file_handler = TimedRotatingFileHandler("logs/tksva_q.log",
                                         encoding='utf-8',
                                         when='d',
                                         interval=1,
-                                          backupCount=7)
+                                        backupCount=7)
 
-handler_file.setFormatter(formatter)
-logger.addHandler(handler_file)
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
-handler_console = logging.StreamHandler()
-handler_console.setFormatter(formatter)
-# logger.addHandler(handler_console)
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
